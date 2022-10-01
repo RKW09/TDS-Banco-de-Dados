@@ -272,3 +272,8 @@ ORDER BY WORKER_ID DESC LIMIT 1;
 -- /*35. Escreva uma consulta SQL para buscar os últimos cinco registros de uma tabela.*/
 SELECT * FROM WORKER 
 ORDER BY WORKER_ID DESC LIMIT 5; -- TA INVERTENDO, DO 8 AO 4
+
+-- assim mostra em ordem
+(SELECT * FROM Worker 
+ORDER BY WORKER_ID DESC LIMIT 5) 
+ORDER BY WORKER_ID ASC;
