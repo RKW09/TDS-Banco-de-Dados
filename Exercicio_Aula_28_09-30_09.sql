@@ -239,7 +239,12 @@ LIMIT 10;
 
 
 /*28. Escreva uma consulta SQL para determinar o 5º salário mais alto sem usar o método limit.*/
-
+SELECT * FROM
+(SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) AS FUNCIONARIO, SALARY,
+DENSE_RANK() OVER
+(ORDER BY SALARY DESC) RANKING_SALARIO FROM WORKER) AS W
+WHERE RANKING_SALARIO = 5;
+    
 
 /*29. Escreva uma consulta SQL para buscar a lista de funcionários com o mesmo salário.*/
 
