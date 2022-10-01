@@ -219,6 +219,11 @@ AND TempNew.TotalSalary = T.Salary;
 SELECT * FROM Worker
 WHERE MOD(WORKER_ID, 2) <> 0;
 
+SELECT * FROM
+(SELECT *, DENSE_RANK() OVER (ORDER BY WORKER_ID) 
+Numero_Linha_Impar FROM Worker) as W
+WHERE MOD(Numero_Linha_Impar, 2) <> 0;
+
 -- usando variavel
 SET @a = 0;
 SELECT * FROM Worker where (@a := @a + 1) % 2 <> 0;
@@ -227,6 +232,11 @@ SELECT * FROM Worker where (@a := @a + 1) % 2 <> 0;
 -- /*26. Escreva uma consulta SQL para mostrar apenas as linhas pares de uma tabela.*/
 SELECT * FROM Worker
 WHERE MOD(WORKER_ID, 2) = 0;
+
+SELECT * FROM
+(SELECT *, DENSE_RANK() OVER (ORDER BY WORKER_ID) 
+Numero_Linha_Impar FROM Worker) as W
+WHERE MOD(Numero_Linha_Impar, 2) <> 0;
 
 -- usando variavel
 SET @a = 0; 
