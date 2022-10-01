@@ -1,4 +1,4 @@
-CREATE DATABASE TRABALHADORES;
+
 
 USE TRABALHADORES;
 
@@ -59,13 +59,11 @@ INSERT INTO Title
  (006, 'Lead', '2016-06-11 00:00:00'),
  (003, 'Lead', '2016-06-11 00:00:00');
  
- /*Ex 1. Escreva uma consulta SQL para buscar “FIRST_NAME” da tabela Worker 
- usando o nome do alias como <WORKER_NAME>.*/
- SELECT FIRST_NAME AS `<WORKER_NAME>`
+ /*Ex 1. Escreva uma consulta SQL para buscar “FIRST_NAME” da tabela Worker usando o nome do alias como <WORKER_NAME>.*/
+ SELECT FIRST_NAME AS WORKER_NAME
  FROM WORKER;
  
- /*2. Escreva uma consulta SQL para buscar “FIRST_NAME” da tabela Worker em maiúsculas. 
- [Dica: use a função UPPER]*/
+ /*2. Escreva uma consulta SQL para buscar “FIRST_NAME” da tabela Worker em maiúsculas. [Dica: use a função UPPER]*/
  SELECT UPPER(FIRST_NAME)
  FROM WORKER;
  
@@ -73,35 +71,27 @@ INSERT INTO Title
  SELECT DISTINCT DEPARTMENT
  FROM WORKER;
  
- /*4. Escreva uma consulta SQL para imprimir os três primeiros caracteres de 
- FIRST_NAME da tabela Worker. [Dica: use a função SUBSTRING]*/
+ /*4. Escreva uma consulta SQL para imprimir os três primeiros caracteres de FIRST_NAME da tabela Worker. [Dica: use a função SUBSTRING]*/
  SELECT SUBSTRING(FIRST_NAME, 1, 3) AS `3 PRIMEIRAS LETRAS`
  FROM WORKER;
  
- /*5. Escreva uma consulta SQL para imprimir o FIRST_NAME da tabela Worker após 
- remover os espaços em branco do lado direito. [Dica: use a função RTRIM]*/
+ /*5. Escreva uma consulta SQL para imprimir o FIRST_NAME da tabela Worker após remover os espaços em branco do lado direito. [Dica: use a função RTRIM]*/
  SELECT RTRIM(FIRST_NAME)
  FROM WORKER;
  
- /*6. Escreva uma consulta SQL para imprimir a tabela DEPARTMENT from Worker após 
- remover os espaços em branco do lado esquerdo. [Dica: use a função LTRIM]*/
+ /*6. Escreva uma consulta SQL para imprimir a tabela DEPARTMENT from Worker após remover os espaços em branco do lado esquerdo. [Dica: use a função LTRIM]*/
  SELECT LTRIM(DEPARTMENT)
  FROM WORKER;
  
- /*7. Escreva uma consulta SQL que busque os valores exclusivos de DEPARTMENT 
- da tabela Worker e imprima seu comprimento. 
- [Dica: use a função LENGHT associada com a função de distinção]*/
+ /*7. Escreva uma consulta SQL que busque os valores exclusivos de DEPARTMENT da tabela Worker e imprima seu comprimento. [Dica: use a função LENGHT associada com a função de distinção]*/
  SELECT DISTINCT LENGTH(DEPARTMENT)
  FROM WORKER;
  
- /*8. Escreva uma consulta SQL para selecionar o FIRST_NAME da tabela Worker 
- após substituir 'a' por 'A'.*/
+ /*8. Escreva uma consulta SQL para selecionar o FIRST_NAME da tabela Worker após substituir 'a' por 'A'.*/
  SELECT REPLACE(FIRST_NAME, "a", "A")
  FROM WORKER;
  
- /*9. Faça uma consulta SQL para selecionar o FIRST_NAME e LAST_NAME da tabela Worker 
- em uma única coluna chamada COMPLETE_NAME. Um caractere de espaço deve separá-los. 
- [Dica: use a função CONCAT]*/
+ /*9. Faça uma consulta SQL para selecionar o FIRST_NAME e LAST_NAME da tabela Worker em uma única coluna chamada COMPLETE_NAME. Um caractere de espaço deve separá-los. [Dica: use a função CONCAT]*/
  SELECT CONCAT(FIRST_NAME, " ", LAST_NAME) AS COMPLETE_NAME
  FROM WORKER;
  
@@ -110,71 +100,77 @@ INSERT INTO Title
  SELECT * FROM WORKER
  ORDER BY FIRST_NAME ASC;
  
- /*11. Escreva uma consulta SQL para imprimir todos os detalhes do Worker da tabela Worker 
- ordenados por FIRST_NAME ascendente e DEPARTMENT descendente na mesma query.*/
+ /*11. Escreva uma consulta SQL para imprimir todos os detalhes do Worker da tabela Worker ordenados por FIRST_NAME ascendente e DEPARTMENT descendente na mesma query.*/
  SELECT * FROM WORKER
  ORDER BY FIRST_NAME ASC, DEPARTMENT DESC;
  
- /*12. Escreva uma consulta SQL para trazer detalhes de trabalhadores 
- com nome de departamento como “Admin”.*/
+ /*12. Escreva uma consulta SQL para trazer detalhes de trabalhadores com nome de departamento como “Admin”.*/
  SELECT * FROM WORKER
  WHERE DEPARTMENT LIKE "Admin";
  
- /*13. Escreva uma consulta SQL para imprimir detalhes dos 
- trabalhadores cujo FIRST_NAME contém 'a'.*/
+ /*13. Escreva uma consulta SQL para imprimir detalhes dos trabalhadores cujo FIRST_NAME contém 'a'.*/
  SELECT * FROM WORKER
  WHERE FIRST_NAME LIKE '%a%';
  
- /*14. Escreva uma consulta SQL para imprimir detalhes 
- dos trabalhadores cujo FIRST_NAME termina com 'a'.*/
+ /*14. Escreva uma consulta SQL para imprimir detalhes dos trabalhadores cujo FIRST_NAME termina com 'a'.*/
  SELECT * FROM WORKER
  WHERE FIRST_NAME LIKE '%a';
  
- /*15. Escreva uma consulta SQL para imprimir detalhes 
- dos trabalhadores cujo salário esteja entre 100.000 e 500.000.*/
+ /*15. Escreva uma consulta SQL para imprimir detalhes dos trabalhadores cujo salário esteja entre 100.000 e 500.000.*/
  SELECT * FROM WORKER
  WHERE SALARY BETWEEN 100000 AND 500000;
  
- /*16. Escreva uma consulta SQL para selecionar detalhes 
- dos trabalhadores que ingressaram em fevereiro de 2014.*/
+ SELECT * FROM WORKER WHERE FIRST_NAME BETWEEN 'Monica' AND 'Rino';
+ 
+ /*16. Escreva uma consulta SQL para selecionar detalhes dos trabalhadores que ingressaram em fevereiro de 2014.*/
  SELECT * FROM WORKER
  WHERE JOINING_DATE LIKE '%14-02%';
  
- /*17. Escreva uma consulta SQL para buscar a contagem de funcionários 
- que trabalham no departamento 'Admin'.*/
- SELECT COUNT(DEPARTMENT)
+ SELECT * FROM WORKER WHERE YEAR(JOINING_DATE) = 2014 AND MONTH(JOINING_DATE) = 2;
+ 
+ /*17. Escreva uma consulta SQL para buscar a contagem de funcionários que trabalham no departamento 'Admin'.*/
+ SELECT COUNT(WORKER_ID)
  FROM WORKER
  WHERE DEPARTMENT LIKE 'Admin';
  
- /*18. Escreva uma consulta SQL para buscar nomes de trabalhadores com 
- salários >= 50.000 e <= 100.000.*/
+ SELECT COUNT(*) FROM WORKER WHERE DEPARTMENT LIKE 'Admin';
+ 
+ /*18. Escreva uma consulta SQL para buscar nomes de trabalhadores com salários >= 50.000 e <= 100.000.*/
  SELECT FIRST_NAME 
  FROM WORKER 
  WHERE SALARY BETWEEN 50000 AND 100000;
  
- /*19. Escreva uma consulta SQL para buscar o número de trabalhadores 
- para cada departamento em ordem decrescente.*/
-SELECT COUNT(FIRST_NAME) AS CONTAGEM
+SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) AS WORKER_NAME, SALARY
+ FROM WORKER 
+ WHERE WORKER_ID in
+ (SELECT WORKER_ID FROM WORKER
+ WHERE SALARY BETWEEN 50000 AND 100000);
+ 
+ /*19. Escreva uma consulta SQL para buscar o número de trabalhadores para cada departamento em ordem decrescente.*/
+SELECT DEPARTMENT, COUNT(FIRST_NAME) AS CONTAGEM
 FROM WORKER
 GROUP BY DEPARTMENT 
 ORDER BY CONTAGEM DESC;
  
- /*20. Escreva uma consulta SQL para imprimir detalhes dos 
- trabalhadores que também são gerentes (managers).*/
+ /*20. Escreva uma consulta SQL para imprimir detalhes dos trabalhadores que também são gerentes (managers).*/
  SELECT * FROM WORKER W
  INNER JOIN TITLE T
  ON T.WORKER_REF_ID = W.WORKER_ID
  AND WORKER_TITLE = 'Manager';
  
-/*21. Escreva uma consulta SQL para buscar registros duplicados 
-com dados correspondentes em alguns campos de uma tabela.*/
+/*21. Escreva uma consulta SQL para buscar registros duplicados com dados correspondentes em alguns campos de uma tabela.*/
 SELECT SALARY
 FROM WORKER
 GROUP BY SALARY
 HAVING COUNT(SALARY) > 1;
+
+SELECT WORKER_TITLE, AFFECTED_FROM, COUNT(*)
+FROM TITLE
+GROUP BY WORKER_TITLE, AFFECTED_FROM
+HAVING COUNT(*) > 1;
+
  
-/*22. Escreva uma consulta SQL para mostrar a data e hora atuais 
-[Dica: use a função CURDATE]*/
+/*22. Escreva uma consulta SQL para mostrar a data e hora atuais [Dica: use a função CURDATE]*/
 SELECT CURDATE();
  
 /*23. Escreva uma consulta SQL para buscar os departamentos que têm menos de cinco pessoas.*/
@@ -183,9 +179,15 @@ FROM WORKER
 GROUP BY DEPARTMENT
 HAVING COUNT(DEPARTMENT) < 5;
 
-/*24. Escreva uma consulta SQL para imprimir o nome dos funcionários 
-com o salário mais alto em cada departamento.*/
-SELECT FIRST_NAME
-FROM WORKER 
+SELECT DEPARTMENT, COUNT(WORKER_ID) AS 'NUMBER OF WORKERS'
+FROM WORKER
 GROUP BY DEPARTMENT
-HAVING MAX(SALARY);
+HAVING COUNT(WORKER_ID) < 5;
+
+/*24. Escreva uma consulta SQL para imprimir o nome dos funcionários com o salário mais alto em cada departamento.*/
+SELECT T.Department, T.FIRST_NAME, T.SALARY FROM
+(SELECT MAX(SALARY) AS TotalSalary, DEPARTMENT FROM WORKER
+GROUP BY DEPARTMENT) AS TempNew
+INNER JOIN WORKER T ON TempNew.DEPARTMENT = T.DEPARTMENT
+AND TempNew.TotalSalary = T.Salary;
+
