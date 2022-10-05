@@ -259,6 +259,12 @@ SELECT * FROM
 DENSE_RANK() OVER
 (ORDER BY SALARY DESC) RANKING_SALARIO FROM WORKER) AS W
 WHERE RANKING_SALARIO = 5;
+
+SELECT DISTINCT salary
+FROM Worker A
+WHERE 5 = (SELECT count(1) 
+  FROM Worker B 
+  WHERE B.salary > A.salary);
     
 
 /*29. Escreva uma consulta SQL para buscar a lista de funcionários com o mesmo salário.*/
