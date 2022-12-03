@@ -1,3 +1,5 @@
+-- Grupo: Adriano, Alessandro, Douglas e Viktor Leon
+
 CREATE DATABASE DESAPARECIDOS;
 
 USE DESAPARECIDOS;
